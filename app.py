@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import mysql.connector
 import bcrypt
 
@@ -41,14 +41,30 @@ def login():
             user = cursor.fetchone()
             
             if user and bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
-                flash('Inicio de sesión exitoso', 'success')
-                return redirect(url_for('login'))
+                session['logged_in'] = True
+                session['username'] = username
+                return redirect(url_for('login_success'))
             else:
+                session['logged_in'] = False
                 flash('Nombre de usuario o contraseña incorrectos', 'danger')
+                return redirect(url_for('login_fail'))
         else:
             flash('Error en la conexión a la base de datos', 'danger')
     
     return render_template('login.html')
+
+# Ruta para la página de éxito de inicio de sesión
+@app.route('/login-success')
+def login_success():
+    if session.get('logged_in'):
+        return render_template('login_success.html', username=session.get('username'))
+    else:
+        return redirect(url_for('login'))
+
+# Ruta para la página de fallo en el inicio de sesión
+@app.route('/login-fail')
+def login_fail():
+    return render_template('login_fail.html')
 
 # Ruta de registro (puedes implementarla)
 @app.route('/register', methods=['GET', 'POST'])
