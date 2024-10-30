@@ -113,6 +113,14 @@ def show_data():
     password = request.args.get('password')
     return render_template('show_data.html', username=username, password=password)
 
+# Ruta para la página de registro
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Aquí tenemos que agregar todavía codigo para agregar a la BD del profe.
+        return redirect(url_for('login'))
+    return render_template('register.html')
+
 if __name__ == '__main__':
     conn = create_connection()
     if conn:
