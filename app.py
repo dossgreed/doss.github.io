@@ -57,6 +57,10 @@ def verify_user(connection, username, password):
         print(f"Error al verificar usuario: {e}")
         return False
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 # Ruta principal para el formulario de inicio de sesión
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -85,7 +89,7 @@ def login():
                 #flash(f"Recibido password: {session['username']}")
                 #return redirect(url_for('show_data', username=session['username'], password=session['logged_in']))
     
-    return render_template('index.html')
+    return render_template('login_template.html')
 
 # Ruta para la página de éxito de inicio de sesión
 #

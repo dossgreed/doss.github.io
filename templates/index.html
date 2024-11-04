@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
     <title>Página de inicio</title>
-</head>
-<body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-</body>
+  </head>
+  <body>
+    <header>
+      <div class="logo">TuLogo</div>
+      <nav>
+        <a href="#registro">Registrarse</a>
+        <a href="#inicio-sesion">Iniciar sesión</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <h1>Únete a nuestra plataforma de streaming</h1>
+        <p>
+          Disfruta del mejor contenido en un solo lugar. Regístrate ahora y
+          explora un mundo de entretenimiento.
+        </p>
+        <button class="cta-button" onclick="window.location='#registro'">
+          Regístrate Gratis
+        </button>
+      </section>
+      <section class="about" id="about">
+        <h2>Sobre Nuestra Plataforma</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut
+          metus eget odio bibendum feugiat a at elit. Proin eu nisi ac mauris
+          elementum convallis a a augue.
+        </p>
+        <p>
+          Descubre contenido exclusivo y personalizado que se adapta a tus
+          gustos. Con nuestra tecnología de recomendación avanzada, te llevamos
+          lo mejor del entretenimiento directamente a tus dispositivos.
+        </p>
+      </section>
+      <section class="call-to-action" id="registro">
+        <h2>¿Listo para comenzar?</h2>
+        <p>Crea una cuenta gratuita o inicia sesión para continuar</p>
+        <div class="cta-buttons">
+          <button onclick="window.location='#registro'">Crear cuenta</button>
+          <button onclick="window.location='#inicio-sesion'">
+            Iniciar sesión
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 TuApp de Streaming</p>
+      <nav>
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </footer>
+  </body>
 </html>
