@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Usuario</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/user_panel.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+          <div class="position-sticky">
+            <h3 class="text-white text-center my-3">Mi Cuenta</h3>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#" id="subscription-link"
+                  >Suscripción</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="account-settings-link"
+                  >Ajustes de Cuenta</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div id="main-content">
+            <h2>Bienvenido a tu panel de usuario</h2>
+            <p>
+              Selecciona una opción en la barra lateral para ver más detalles.
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="static/js/user_panel.js"></script>
+  </body>
+</html>

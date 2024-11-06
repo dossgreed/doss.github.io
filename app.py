@@ -121,6 +121,10 @@ def show_data():
     password = request.args.get('password')
     return render_template('show_data.html', username=username, password=password)
 
+@app.route('/user-panel')
+def user_panel():
+    return render_template('user_panel.html')
+
 if __name__ == '__main__':
     conn = create_connection()
     if conn:
