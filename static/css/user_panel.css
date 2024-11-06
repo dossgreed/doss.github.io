@@ -1,30 +1,59 @@
-/* Barra lateral */
-.sidebar {
-  height: 100vh;
-  position: fixed;
-  color: #ffffff;
-}
-
-.sidebar h3 {
-  font-weight: bold;
-  color: #1e90ff;
-}
-
-.sidebar .nav-link {
-  color: #a9a9a9;
-}
-
-.sidebar .nav-link.active {
-  color: #ffffff;
-  background-color: #1e90ff;
-}
-
-.sidebar .nav-link:hover {
-  color: #ffffff;
-}
-
-/* Contenido principal */
-#main-content {
-  margin-left: 250px;
-  padding: 2rem;
-}
+/* Estilo general del cuerpo */
+body {
+    background-color: #050713;
+    color: #FFFFFF;
+  }
+  
+  /* Barra lateral */
+  .sidebar {
+    background-color: #10121B;
+    height: 100vh;
+    position: fixed;
+    color: #FFFFFF;
+    padding: 0;
+  }
+  
+  .sidebar h3 {
+    color: #1E90FF;
+    font-weight: bold;
+  }
+  
+  .sidebar .nav-link {
+    color: #A9A9A9;
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar .nav-link.active,
+  .sidebar .nav-link:hover {
+    background-color: #1E90FF;
+    color: #FFFFFF;
+    border-radius: 5px;
+  }
+  
+  /* Área principal de contenido */
+  main {
+    margin-left: 250px; /* Ajuste de espacio para la barra lateral */
+    padding: 2rem;
+    color: #A9A9A9;
+  }
+  
+  #main-content {
+    background-color: #1C1F2E;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .content-title {
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+  
+  .content-description {
+    color: #A9A9A9;
+    margin-top: 1rem;
+  }
+  
