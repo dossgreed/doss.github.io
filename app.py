@@ -111,6 +111,10 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
+
 @app.route('/show-data')
 def show_data():
     username = request.args.get('username')
