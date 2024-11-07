@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión Exitoso</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="bg-success d-flex justify-content-center align-items-center vh-100">
     <div class="bg-white p-5 rounded-5 text-secondary shadow text-center" style="width: 25rem">
         <h1 class="fs-1 fw-bold">¡Inicio de sesión exitoso!</h1>
         <p>Bienvenido, {{ username }}.</p>
-        <a href="/login" class="btn btn-info text-white mt-3">Volver al Login</a>
+        {% if is_admin %}
+            <p>Estás en el panel de <strong>administrador</strong>.</p>
+        {% else %}
+            <p>Estás en el área de <strong>usuario</strong>.</p>
+        {% endif %}
+        <a href="/logout" class="btn btn-info text-white mt-3">Cerrar sesión</a>
     </div>
 </body>
 </html>
