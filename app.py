@@ -30,7 +30,7 @@ def create_connection():
 
 def verify_user(connection, username, password):
     try:
-        select_query = "SELECT password_hash, role FROM users WHERE username = %s"
+        select_query = "SELECT password_hash, rol FROM users WHERE username = %s"
         cursor = connection.cursor()
         cursor.execute(select_query, (username,))
         result = cursor.fetchone()
