@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import mysql.connector
 import bcrypt
+import re
 
 #app = Flask(__name__)
 app = Flask(__name__, template_folder='templates')
@@ -120,6 +121,65 @@ def register():
         # Aquí tenemos que agregar todavía codigo para agregar a la BD del profe.
         return redirect(url_for('login'))
     return render_template('register.html')
+
+
+
+###### DR --- registro y validacion de usuarios
+@app.route('/users')
+def validate_password(password):
+    #Valida que la contraseña tenga al menos 8 caracteres, un carácter especial, una mayúscula y un número.
+    if (len(password) >= 8 and
+        re.search(r"[A-Z]", password) and
+        re.search(r"[0-9]", password) and
+        re.search(r"[@$!%*?&]", password)):
+        return True
+    else:
+        return False
+
+def user_exists(connection, username):
+    #Verifica si el usuario ya existe en la base de datos.
+    cursor = connection.cursor()
+    query = "SELECT * FROM users WHERE username = %s"
+    cursor.execute(query, (username,))
+    result = cursor.fetchone()
+    cursor.close()
+    return result is not None
+
+def register_user(username, password):
+    connection = create_connection()
+    if not connection:
+        print("No se pudo conectar a la base de datos.")
+        return False
+
+    try:
+        # Verifica si el usuario ya existe
+        if user_exists(connection, username):
+            print("El usuario ya está registrado.")
+            return False
+
+        # Valida la contraseña
+        if not validate_password(password):
+            print("La contraseña no cumple con los requisitos.")
+            return False
+
+        # Encripta la contraseña
+        hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+
+        # Inserta el usuario en la base de datos
+        cursor = connection.cursor()
+        query = "INSERT INTO users (username, password_hash) VALUES (%s, %s)"
+        cursor.execute(query, (username, hashed_password))
+        connection.commit()
+        print("Usuario registrado exitosamente.")
+        return True
+    except mysql.connector.Error as err:
+        print(f"Error al registrar el usuario: {err}")
+        return False
+    finally:
+        connection.close()
+
+
+############
 
 if __name__ == '__main__':
     conn = create_connection()
