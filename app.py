@@ -37,19 +37,15 @@ def create_connection():
 
 def verify_user(connection, username, password):
     try:
-        select_query = "SELECT password_hash, rol FROM users WHERE username = %s"
+        select_query = "SELECT password_hash FROM users WHERE username = %s"
         cursor = connection.cursor()
         cursor.execute(select_query, (username,))
         result = cursor.fetchone()
 
         if result:
             stored_password_hash = result[0]
-            user_role = result[1]
             if bcrypt.checkpw(password.encode('utf-8'), stored_password_hash.encode('utf-8')):
                 print(f"Inicio de sesión exitoso para el usuario '{username}'")
-                session['logged_in'] = True
-                session['username'] = username
-                session['rol'] = user_role
                 return True
             else:
                 print("Contraseña incorrecta")
@@ -96,7 +92,7 @@ def login():
 @app.route('/login-success')
 def login_success():
     if session.get('logged_in'):
-       return render_template('login_success.html', username=session.get('username') , rol =session.get('rol'))
+       return render_template('login_success.html', username=session.get('username'))
     else:
         return redirect(url_for('login'))
 
