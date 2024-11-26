@@ -1,0 +1,53 @@
+/* Fondo y estilos generales */
+body {
+  background-color: #050713;
+  color: #ffffff;
+}
+
+/* Contenedor principal */
+.register-container {
+  background-color: #10121b;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Icono de encabezado */
+.register-icon {
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+
+/* Botón de registro */
+.btn-register {
+  background-color: #1e90ff;
+  border: none;
+}
+.btn-register:hover {
+  background-color: #005bbb;
+}
+
+/* Campos de entrada */
+.form-control {
+  background-color: #1c1f2e;
+  color: #ffffff;
+}
+.form-control:focus {
+  border-color: #1e90ff;
+  box-shadow: none;
+}
+.input-group-text {
+  background-color: #1e90ff;
+  border: none;
+}
+
+/* Link a iniciar sesión */
+.login-link {
+  color: #1e90ff;
+}
+.login-link:hover {
+  color: #005bbb;
+  text-decoration: underline;
+}

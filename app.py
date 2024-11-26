@@ -63,6 +63,10 @@ def verify_user(connection, username, password):
         print(f"Error al verificar usuario: {e}")
         return False
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 # Ruta principal para el formulario de inicio de sesión
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -91,7 +95,7 @@ def login():
                 #flash(f"Recibido password: {session['username']}")
                 #return redirect(url_for('show_data', username=session['username'], password=session['logged_in']))
     
-    return render_template('index.html')
+    return render_template('login_template.html')
 
 # Ruta para la página de éxito de inicio de sesión
 #
@@ -113,11 +117,19 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
+
 @app.route('/show-data')
 def show_data():
     username = request.args.get('username')
     password = request.args.get('password')
     return render_template('show_data.html', username=username, password=password)
+
+@app.route('/user-panel')
+def user_panel():
+    return render_template('user_panel.html')
 
 # Ruta para la página de registro
 @app.route('/register', methods=['GET', 'POST'])
@@ -184,7 +196,7 @@ def register_user(username, password):
         connection.close()
 
 
-############
+
 
 if __name__ == '__main__':
     conn = create_connection()
