@@ -132,12 +132,13 @@ def user_panel():
     return render_template('user_panel.html')
 
 # Ruta para la página de registro
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        # Aquí tenemos que agregar todavía codigo para agregar a la BD del profe.
-        return redirect(url_for('login'))
-    return render_template('register.html')
+#Comentado por función duplicada
+#@app.route('/register', methods=['GET', 'POST'])
+#def register():
+#    if request.method == 'POST':
+#        # Aquí tenemos que agregar todavía codigo para agregar a la BD del profe.
+#        return redirect(url_for('login'))
+#    return render_template('register.html')
 
 
 
