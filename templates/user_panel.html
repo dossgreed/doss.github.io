@@ -1,47 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Usuario | Tu App de Streaming</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='css/user_panel.css') }}"
-    />
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Barra lateral de navegación -->
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-          <div class="sidebar-sticky">
-            <h3 class="text-center mt-4 mb-4">Mi Cuenta</h3>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Suscripción</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Ajustes de Cuenta</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Usuario | Tu App de Streaming</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/user_panel.css') }}">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Barra lateral -->
+      <nav class="col-md-3 col-lg-2 sidebar">
+        <div class="sidebar-sticky">
+          <h3 class="text-center mt-4 mb-4">Mi Cuenta</h3>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Suscripción</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ajustes de Cuenta</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-        <!-- Área principal de contenido -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div id="main-content">
-            <h2 class="content-title">Bienvenido a tu panel de usuario</h2>
-            <p class="content-description">
-              Selecciona una opción en la barra lateral para ver más detalles.
-            </p>
+      <!-- Área principal -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div id="main-content">
+          <h2 class="content-title">Mis Videos</h2>
+          <p class="content-description">
+            Selecciona un video para reproducirlo.
+          </p>
+
+          <!-- Lista de videos -->
+          <div class="row video-list mt-4">
+            <div class="col-md-4 video-item" data-video="1.mp4">
+              <img src="1.mp4" class="video-thumbnail img-fluid" alt="Miniatura Video 1">
+              <div class="video-info mt-2">
+                <div class="video-name">Mi Video 1</div>
+                <div class="video-duration">5:47</div>
+              </div>
+            </div>
+            <div class="col-md-4 video-item" data-video="2.mp4">
+              <img src="2.mp4" class="video-thumbnail img-fluid" alt="Miniatura Video 2">
+              <div class="video-info mt-2">
+                <div class="video-name">Vacaciones 2024</div>
+                <div class="video-duration">2:30</div>
+              </div>
+            </div>
+            <div class="col-md-4 video-item" data-video="3.mp4">
+              <img src="3.mp4" class="video-thumbnail img-fluid" alt="Miniatura Video 3">
+              <div class="video-info mt-2">
+                <div class="video-name">Proyecto Final</div>
+                <div class="video-duration">4:15</div>
+              </div>
+            </div>
           </div>
-        </main>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal para reproducir video -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videoModalLabel">Reproductor de Video</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <video class="video-player w-100" controls>
+            <source src="" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/user_panel.js') }}"></script>
+</body>
 </html>
